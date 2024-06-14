@@ -14,7 +14,7 @@ test_dir = os.path.join(base_dir, 'data/train_full/healthy')
 data_path = [os.path.join(test_dir,f) for f in os.listdir(test_dir)]
 #
 model = keras.models.load_model(models_dir)
-img = keras.utils.load_img(path=data_path[100], target_size=(224,224),color_mode='rgb',interpolation='nearest')
+img = keras.utils.load_img(path=data_path[12], target_size=(224,224),color_mode='rgb',interpolation='nearest')
 img_array = keras.utils.img_to_array(img)
 img_array = tf.expand_dims(img_array, 0) # Create a batch
 
