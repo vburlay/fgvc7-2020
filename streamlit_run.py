@@ -6,6 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from tutorial import dat_gen
 import streamlit as st
+import pandas as pd
 
 
 _, _, generator_train_full = dat_gen.train_val_generators()
@@ -35,11 +36,35 @@ if add_selectbox  == "Application start" :
     with tab1:
         uploaded_file = st.file_uploader("Choose an image...")
         if uploaded_file is not None:
-            img = keras.utils.load_img(path=uploaded_file, target_size=(400, 400), color_mode='rgb',
+            img_view = keras.utils.load_img(path=uploaded_file, target_size=(400, 400), color_mode='rgb',
                                    interpolation='nearest')
-            st.image(img)
+            img = keras.utils.load_img(path=uploaded_file, target_size=(224, 224), color_mode='rgb',
+                                            interpolation='nearest')
+            img_array = keras.utils.img_to_array(img)
+            img_array = tf.expand_dims(img_array, 0)  # Create a batch
+            st.image(img_view)
             res_button = st.button("Predict", type="primary")
+
+            if add_radio == "Custom model":
+                models_dir = os.path.join(base_dir, 'models/customer_model.keras')
+
+            elif  add_radio == "Custom Resnet34":
+                models_dir = os.path.join(base_dir, 'models/customer_model_resnet.keras')
+
+            elif add_radio == "VGG16(pretrainted)":
+                models_dir = os.path.join(base_dir, 'models/vgg16.h5')
+
+            elif add_radio == "EfficientNetB0(pretrainted)":
+                models_dir = os.path.join(base_dir, 'models/EfficientNetB0.h5')
+
+            model = keras.models.load_model(models_dir)
             if res_button:
+                predictions = model.predict(img_array)
+                score = tf.nn.softmax(predictions[0])
+                st.write("This image most likely belongs to {} with a {:.2f} percent confidence".format(classes.get(np.argmax(score)), 100 * np.max(score)))
+                fr = pd.DataFrame(score).rename(classes)
+                fr = fr.rename(columns={0: "Score"})
+                st.write(fr)
                 st.write(":smile:")
     with tab2:
         st.title('2')
