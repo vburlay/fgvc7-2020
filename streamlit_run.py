@@ -27,7 +27,7 @@ st.sidebar.title("Control Panel")
 #
 with st.sidebar:
     add_selectbox = st.selectbox("App-Mode",["Application start", "Show the source code"])
-    add_radio = st.radio("Choose a model",("Custom model", "Custom Resnet34", "VGG16(pretrainted)", "EfficientNetB0(pretrainted)"))
+    add_radio = st.radio("Choose a model",("Custom model", "Custom Resnet34", "VGG16(pre-train)", "EfficientNetB0(pre-train)"))
 
 if add_selectbox  == "Application start" :
     st.title("The Plant")
@@ -36,12 +36,14 @@ if add_selectbox  == "Application start" :
     with tab1:
         uploaded_file = st.file_uploader("Choose an image...")
         if uploaded_file is not None:
-            img_view = keras.utils.load_img(path=uploaded_file, target_size=(400, 400), color_mode='rgb',
+            img_view = keras.utils.load_img(path=uploaded_file, target_size=(400, 500), color_mode='rgb',
                                    interpolation='nearest')
             img = keras.utils.load_img(path=uploaded_file, target_size=(224, 224), color_mode='rgb',
                                             interpolation='nearest')
             img_array = keras.utils.img_to_array(img)
+            img_array /= 255
             img_array = tf.expand_dims(img_array, 0)  # Create a batch
+
             st.image(img_view)
             res_button = st.button("Predict", type="primary")
 
@@ -51,15 +53,16 @@ if add_selectbox  == "Application start" :
             elif  add_radio == "Custom Resnet34":
                 models_dir = os.path.join(base_dir, 'models/customer_model_resnet.keras')
 
-            elif add_radio == "VGG16(pretrainted)":
+            elif add_radio == "VGG16(pre-train)":
                 models_dir = os.path.join(base_dir, 'models/vgg16.h5')
 
-            elif add_radio == "EfficientNetB0(pretrainted)":
+            elif add_radio == "EfficientNetB0(pre-train)":
                 models_dir = os.path.join(base_dir, 'models/EfficientNetB0.h5')
 
             model = keras.models.load_model(models_dir)
             if res_button:
-                predictions = model.predict(img_array)
+                image_tensor = np.vstack([img_array])
+                predictions = model.predict(image_tensor)
                 score = tf.nn.softmax(predictions[0])
                 st.write("This image most likely belongs to {} with a {:.2f} percent confidence".format(classes.get(np.argmax(score)), 100 * np.max(score)))
                 fr = pd.DataFrame(score).rename(classes)
