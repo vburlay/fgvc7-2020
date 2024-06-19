@@ -41,7 +41,7 @@ if add_selectbox  == "Application start" :
             img = keras.utils.load_img(path=uploaded_file, target_size=(224, 224), color_mode='rgb',
                                             interpolation='nearest')
             img_array = keras.utils.img_to_array(img)
-            img_array /= 255
+            img_array /= 255 # Scaling
             img_array = tf.expand_dims(img_array, 0)  # Create a batch
 
             st.image(img_view)
