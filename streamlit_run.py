@@ -61,6 +61,7 @@ with st.sidebar:
     if add_radio == "Custom model":
         tabels_dir = os.path.join(base_dir, 'data/customer_model.csv')
         df_test = pd.read_csv(tabels_dir)
+        df_test.drop(columns=['image_id'], axis=1, inplace=True)
     elif add_radio == "Custom Resnet34":
         tabels_dir = os.path.join(base_dir, 'data/customer_model_resnet.csv')
         df_test = pd.read_csv(tabels_dir)
@@ -113,19 +114,11 @@ if add_selectbox  == "Application start" :
                 st.write(fr)
                 st.write(":smile:")
     with tab2:
-
-
         st.dataframe(df_test, width=1200, height=600)
-
-
-
     with tab3:
-
-        st.bar_chart(data=df_test.loc[:, ['healthy', 'multiple_diseases','rust','scab']],  width=1000, height=500)
         fig = px.scatter(df_test, width=1000, height=650)
         st.plotly_chart(fig)
     with tab4:
-
         st.title('3')
 
 # plt.imshow(keras.utils.img_to_array(img)/255)
