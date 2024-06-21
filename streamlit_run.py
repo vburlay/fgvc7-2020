@@ -82,7 +82,11 @@ if add_selectbox  == "Application start" :
                 st.write(fr)
                 st.write(":smile:")
     with tab2:
+        ds = df_test[['healthy','multiple_diseases','rust','scab']]
+        ds.apply(lambda row: np.argmax(row))
+        st.bar_chart(data=ds.apply(lambda row: np.argmax(row)),width=250, height=300)
         st.dataframe(df_test, width=1200, height=600)
+
     with tab3:
         fig = px.scatter(df_test[['healthy','multiple_diseases','rust','scab']], width=1000, height=650)
         st.plotly_chart(fig)
