@@ -91,5 +91,20 @@ def train_customer_model_resnet():
 #    Y_pred = model.predict(generator_validation)
 #    y_pred = np.argmax(Y_pred, axis=1)
 
+def train_resnet50():
+    _, _, generator_train_full = dat_gen.train_val_generators()
+
+
+    model = dat_gen.get_resnet50()
+    history = model.fit(generator_train_full,
+                        epochs=dat_gen.G.nb_epochs,
+                        callbacks=[dat_gen.G.callbacks_train])
+#     Plot the accuracy and loss
+    dat_gen.plot_graphs_train(history, "accuracy")
+    dat_gen.plot_graphs_train(history, "loss")
+
+    print(model.evaluate(generator_train_full))
+    model.save('resnet50.keras')
+
 
 

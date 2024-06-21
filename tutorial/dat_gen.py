@@ -1,6 +1,7 @@
 from keras._tf_keras.keras.preprocessing.image import ImageDataGenerator
 from dataclasses import dataclass
-from keras._tf_keras.keras.applications.vgg16 import preprocess_input
+#from keras._tf_keras.keras.applications.vgg16 import preprocess_input
+from keras._tf_keras.keras.applications.resnet50 import preprocess_input
 import os
 import tensorflow as tf
 import keras._tf_keras.keras
@@ -8,6 +9,7 @@ from keras import layers
 from keras._tf_keras.keras.layers import Layer
 from keras._tf_keras.keras.applications.vgg16 import VGG16
 from keras._tf_keras.keras.applications.efficientnet import EfficientNetB0
+from keras._tf_keras.keras.applications.resnet50 import ResNet50
 import matplotlib.pyplot as plt
 
 
@@ -299,6 +301,36 @@ def get_resnet34():
     model.compile(optimizer=keras.optimizers.Adam(learning_rate=1e-4),
                   loss="categorical_crossentropy",
                   metrics=["accuracy"])
+    keras.backend.clear_session()
+    return model
+
+def feature_extractor(inputs):
+    feature_extractor = ResNet50(input_shape=(224, 224, 3),
+                                               include_top=False,
+                                               weights='imagenet')(inputs)
+    return feature_extractor
+def classifier(inputs):
+    x = keras.layers.GlobalAveragePooling2D()(inputs)
+    x = keras.layers.Flatten()(x)
+    x = keras.layers.Dense(1024, activation="relu")(x)
+    x = keras.layers.Dense(512, activation="relu")(x)
+    x = keras.layers.Dense(4, activation="softmax", name="classification")(x)
+    return x
+def final_model(inputs):
+
+    resnet_feature_extractor = feature_extractor(inputs)
+    classification_output = classifier(resnet_feature_extractor)
+
+    return classification_output
+def get_resnet50():
+    inputs = keras.Input(shape=(G.img_height,G.img_width,G.RGB))
+
+    classification_output = final_model(inputs)
+    model = keras.Model(inputs=inputs, outputs=classification_output)
+
+    model.compile(optimizer='SGD',
+                  loss='categorical_crossentropy',
+                  metrics=['accuracy'])
     keras.backend.clear_session()
     return model
 def get_model_eff(pre_trained_model , last_output):
