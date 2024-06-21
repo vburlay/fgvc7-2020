@@ -87,7 +87,31 @@ if add_selectbox  == "Application start" :
         fig = px.scatter(df_test[['healthy','multiple_diseases','rust','scab']], width=1000, height=650)
         st.plotly_chart(fig)
     with tab4:
-        st.title('3')
+        if add_radio == "Custom model":
+            custom_model_acc =  os.path.join(base_dir, 'my_models_eval/accurancy.png')
+            custom_model_los = os.path.join(base_dir, 'my_models_eval/loss.png')
+            st.image(custom_model_acc)
+            st.image(custom_model_los)
+        elif add_radio == "Custom Resnet34":
+            custom_resnet34_acc = os.path.join(base_dir, 'my_models_eval/accurancy_custom_resnet.png')
+            custom_resnet34_los = os.path.join(base_dir, 'my_models_eval/loss_custom_resnet.png')
+            st.image(custom_resnet34_acc)
+            st.image(custom_resnet34_los)
+        elif add_radio == "VGG16(pre-train)":
+            vgg16_model_acc = os.path.join(base_dir, 'my_models_eval/accurancy_vgg16.png')
+            vgg16_model_los = os.path.join(base_dir, 'my_models_eval/loss_vgg16.png')
+            st.image(vgg16_model_acc)
+            st.image(vgg16_model_los)
+        elif add_radio == "EfficientNetB0(pre-train)":
+            eff_model_acc = os.path.join(base_dir, 'my_models_eval/accurancy_es.png')
+            eff_model_los = os.path.join(base_dir, 'my_models_eval/loss_es.png')
+            st.image(eff_model_acc)
+            st.image(eff_model_los)
+        elif add_radio == "ResNet50(pre-train)":
+            resnet50_model_acc = os.path.join(base_dir, 'my_models_eval/accurancy_resnet50.png')
+            resnet50_model_los = os.path.join(base_dir, 'my_models_eval/loss_resnet50.png')
+            st.image(resnet50_model_acc)
+            st.image(resnet50_model_los)
 
 
 
