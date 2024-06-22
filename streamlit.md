@@ -1,6 +1,4 @@
 
- 
-
     """
     Created on Sat Juni 22 15:54:49 2024
     
@@ -16,7 +14,6 @@
     import pandas as pd
     import plotly.express as px
     import urllib
-
     def get_file_content_as_string(path):
         url = 'https://raw.githubusercontent.com/vburlay/fgvc7-2020/master/' + path
         response = urllib.request.urlopen(url)
