@@ -18,10 +18,6 @@ classes = dict((v,k) for k,v in generator_train_full.class_indices.items())
 base_dir = os.getcwd()
 tabels_dir = os.path.join(base_dir, 'data')
 
-st.title('The Plant Pathalogy Challenge 2020 data set to classify foliar disease of apples')
-st.subheader('An App by Vladimir Burlay')
-st.write(('This app classificates sample images from the data set showing symptoms of cedar apple rust(A) apple scrab(B), multiple diseases on a singleleaf (C). Images of symptoms were captured using a digital camera and a smartphone in a research orchard from a lange number of apple cultivars at Cornell AgriTech(Geneva, New York, USA) in 2019'))
-
 
 st.sidebar.title("Control Panel")
 #
@@ -45,6 +41,10 @@ with st.sidebar:
         df_test = pd.read_csv(tabels_dir)
 #df_test_tmp.drop(columns=['image_id'], axis=1, inplace=True)
 if add_selectbox  == "Application start" :
+    st.title('The Plant Pathalogy Challenge 2020 data set to classify foliar disease of apples')
+    st.subheader('An App by Vladimir Burlay')
+    st.write(('This app classificates sample images from the data set showing symptoms of cedar apple rust(A) apple scrab(B), multiple diseases on a singleleaf (C). Images of symptoms were captured using a digital camera and a smartphone in a research orchard from a lange number of apple cultivars at Cornell AgriTech(Geneva, New York, USA) in 2019'))
+
     st.title("The Plant")
 
     tab1,tab2,tab3,tab4 = st.tabs(["Image","Result tabular(test)","Result Diagram","Evaluation"])
