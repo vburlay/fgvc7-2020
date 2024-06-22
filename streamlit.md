@@ -1,56 +1,57 @@
-"""
-Created on Sat Juni 22 15:30:49 2024
+    """
+    Created on Sat Juni 22 15:30:49 2024
 
-@author: Vladimir Burlay
-"""
-import os
-import keras._tf_keras.keras as keras
-import tensorflow as tf
-import numpy as np
-from tutorial import dat_gen
-import streamlit as st
-import pandas as pd
-import plotly.express as px
-import urllib
-def get_file_content_as_string(path):
-    url = 'https://raw.githubusercontent.com/vburlay/uci-bank-marketing/master/data/' + path
-    response = urllib.request.urlopen(url)
-    return response.read().decode("utf-8")
+    @author: Vladimir Burlay
+    """
 
-_, _, generator_train_full = dat_gen.train_val_generators()
-classes = dict((v,k) for k,v in generator_train_full.class_indices.items())
-#
-base_dir = os.getcwd()
-tabels_dir = os.path.join(base_dir, 'data')
-
-st.title('The Plant Pathalogy Challenge 2020 data set to classify foliar disease of apples')
-st.subheader('An App by Vladimir Burlay')
-st.write(('This app classificates sample images from the data set showing symptoms of cedar apple rust(A) apple scrab(B), multiple diseases on a singleleaf (C). Images of symptoms were captured using a digital camera and a smartphone in a research orchard from a lange number of apple cultivars at Cornell AgriTech(Geneva, New York, USA) in 2019'))
-
-
-st.sidebar.title("Control Panel")
-#
-with st.sidebar:
-    add_selectbox = st.selectbox("App-Mode",["Application start", "Show the source code"])
-    add_radio = st.radio("Choose a model",("Custom model", "Custom Resnet34", "VGG16(pre-train)", "EfficientNetB0(pre-train)", "ResNet50(pre-train)"))
-    if add_radio == "Custom model":
-        tabels_dir = os.path.join(base_dir, 'data/customer_model.csv')
-        df_test = pd.read_csv(tabels_dir)
-    elif add_radio == "Custom Resnet34":
-        tabels_dir = os.path.join(base_dir, 'data/customer_model_resnet.csv')
-        df_test = pd.read_csv(tabels_dir)
-    elif add_radio == "VGG16(pre-train)":
-        tabels_dir = os.path.join(base_dir, 'data/vgg16.csv')
-        df_test = pd.read_csv(tabels_dir)
-    elif add_radio == "EfficientNetB0(pre-train)":
-        tabels_dir = os.path.join(base_dir, 'data/EfficientNetB0.csv')
-        df_test = pd.read_csv(tabels_dir)
-    elif add_radio == "ResNet50(pre-train)":
-        tabels_dir = os.path.join(base_dir, 'data/resnet50.csv')
-        df_test = pd.read_csv(tabels_dir)
-#df_test_tmp.drop(columns=['image_id'], axis=1, inplace=True)
-if add_selectbox  == "Application start" :
-    st.title("The Plant")
+        import os
+        import keras._tf_keras.keras as keras
+        import tensorflow as tf
+        import numpy as np
+        from tutorial import dat_gen
+    import streamlit as st
+    import pandas as pd
+    import plotly.express as px
+    import urllib
+    def get_file_content_as_string(path):
+        url = 'https://raw.githubusercontent.com/vburlay/uci-bank-marketing/master/data/' + path
+        response = urllib.request.urlopen(url)
+        return response.read().decode("utf-8")
+    
+    _, _, generator_train_full = dat_gen.train_val_generators()
+    classes = dict((v,k) for k,v in generator_train_full.class_indices.items())
+    #
+    base_dir = os.getcwd()
+    tabels_dir = os.path.join(base_dir, 'data')
+    
+    st.title('The Plant Pathalogy Challenge 2020 data set to classify foliar disease of apples')
+    st.subheader('An App by Vladimir Burlay')
+    st.write(('This app classificates sample images from the data set showing symptoms of cedar apple rust(A) apple scrab(B), multiple diseases on a singleleaf (C). Images of symptoms were captured using a digital camera and a smartphone in a research orchard from a lange number of apple cultivars at Cornell AgriTech(Geneva, New York, USA) in 2019'))
+    
+    
+    st.sidebar.title("Control Panel")
+    #
+    with st.sidebar:
+        add_selectbox = st.selectbox("App-Mode",["Application start", "Show the source code"])
+        add_radio = st.radio("Choose a model",("Custom model", "Custom Resnet34", "VGG16(pre-train)", "EfficientNetB0(pre-train)", "ResNet50(pre-train)"))
+        if add_radio == "Custom model":
+            tabels_dir = os.path.join(base_dir, 'data/customer_model.csv')
+            df_test = pd.read_csv(tabels_dir)
+        elif add_radio == "Custom Resnet34":
+            tabels_dir = os.path.join(base_dir, 'data/customer_model_resnet.csv')
+            df_test = pd.read_csv(tabels_dir)
+        elif add_radio == "VGG16(pre-train)":
+            tabels_dir = os.path.join(base_dir, 'data/vgg16.csv')
+            df_test = pd.read_csv(tabels_dir)
+        elif add_radio == "EfficientNetB0(pre-train)":
+            tabels_dir = os.path.join(base_dir, 'data/EfficientNetB0.csv')
+            df_test = pd.read_csv(tabels_dir)
+        elif add_radio == "ResNet50(pre-train)":
+            tabels_dir = os.path.join(base_dir, 'data/resnet50.csv')
+            df_test = pd.read_csv(tabels_dir)
+    #df_test_tmp.drop(columns=['image_id'], axis=1, inplace=True)
+    if add_selectbox  == "Application start" :
+        st.title("The Plant")
 
     tab1,tab2,tab3,tab4 = st.tabs(["Image","Result tabular(test)","Result Diagram","Evaluation"])
     with tab1:
@@ -127,8 +128,8 @@ if add_selectbox  == "Application start" :
             st.image(resnet50_model_acc)
             st.image(resnet50_model_los)
 
-elif add_selectbox == "Show the source code":
-    readme_text = st.markdown(get_file_content_as_string("streamlit.md"))
+    elif add_selectbox == "Show the source code":
+        readme_text = st.markdown(get_file_content_as_string("streamlit.md"))
 
 
 
