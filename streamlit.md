@@ -1,3 +1,9 @@
+    """
+    Created on Sat Juni 22 15:54:49 2024
+    
+    @author: Vladimir Burlay
+    """
+
     import os
     import keras._tf_keras.keras as keras
     import tensorflow as tf
