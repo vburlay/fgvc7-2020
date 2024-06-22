@@ -10,7 +10,7 @@ import urllib
 def get_file_content_as_string(path):
     url = 'https://raw.githubusercontent.com/vburlay/fgvc7-2020/master/' + path
     response = urllib.request.urlopen(url)
-    return response.read().decode('utf-8')
+    return response.read().decode('cp1252')
 
 _, _, generator_train_full = dat_gen.train_val_generators()
 classes = dict((v,k) for k,v in generator_train_full.class_indices.items())
