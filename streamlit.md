@@ -1,7 +1,5 @@
 
-            Created on Sat Juni 22 15:54:49 2024
-            @author: Vladimir Burlay
-          
+         
             st.image(img_view)
             res_button = st.button("Predict", type="primary")
 
