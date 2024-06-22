@@ -7,10 +7,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import urllib
-def get_file_content_as_string(path):
-    url = 'https://raw.githubusercontent.com/vburlay/fgvc7-2020/master/' + path
-    response = urllib.request.urlopen(url)
-    return response.read().decode('utf-8')
+
 
 _, _, generator_train_full = dat_gen.train_val_generators()
 classes = dict((v,k) for k,v in generator_train_full.class_indices.items())
@@ -26,7 +23,7 @@ st.write(('This app classificates sample images from the data set showing sympto
 st.sidebar.title("Control Panel")
 #
 with st.sidebar:
-    add_selectbox = st.selectbox("App-Mode",["Application start", "Show the source code"])
+    add_selectbox = st.selectbox("App-Mode",["Application start"])
     add_radio = st.radio("Choose a model",("Custom model", "Custom Resnet34", "VGG16(pre-train)", "EfficientNetB0(pre-train)", "ResNet50(pre-train)"))
     if add_radio == "Custom model":
         tabels_dir = os.path.join(base_dir, 'data/customer_model.csv')
@@ -122,8 +119,7 @@ if add_selectbox  == "Application start" :
             st.image(resnet50_model_acc)
             st.image(resnet50_model_los)
 
-elif add_selectbox == "Show the source code":
-    readme_text = st.markdown(get_file_content_as_string("streamlit.md"))
+
 
 
 
