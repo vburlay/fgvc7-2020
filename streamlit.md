@@ -4,11 +4,11 @@
     @author: Vladimir Burlay
     """
 
-        import os
-        import keras._tf_keras.keras as keras
-        import tensorflow as tf
-        import numpy as np
-        from tutorial import dat_gen
+    import os
+    import keras._tf_keras.keras as keras
+    import tensorflow as tf
+    import numpy as np
+    from tutorial import dat_gen
     import streamlit as st
     import pandas as pd
     import plotly.express as px
