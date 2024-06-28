@@ -1,6 +1,6 @@
 # **The Plant Pathalogy Challenge 2020 data set to classify foliar disease of apples** 
 ![image](https://github.com/vburlay/fgvc7-2020/raw/master/data/fpls-12-723294-g001.PNG) 
-> A study of the foliar disease of apples for the purpose to:
+A study of the foliar disease of apples for the purpose to:
 1) Accurately classify a given image from testing dataset into different diseased category or a healthy leaf;
 2) Accurately distinguish between many diseases, sometimes more than one on a single leaf;
 3) Deal with rare classes and novel symptoms;
