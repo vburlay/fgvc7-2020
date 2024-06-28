@@ -50,13 +50,13 @@ ResNet50
 
 * **All models(Evaluation)**
 
-| Architecture    |Accuracy of Training data   |Accuracy of Test data  |
-|-----------|:-----:| -----:|
-|Customer model  |  0,96     |   0,91    |
-|Customer model (ResNet34) |  0,95     |   0,94    |
-|ResNet50  |  0,96     |   0,91    |
-|VGG16 |  0,99    |   0,94    |
-|EfficientNetB0 |  0,94     |   0,94    |
+| Architecture    | Accuracy of Training data |
+|-----------|:-------------------------:|
+|Customer model  |           0,86            |
+|Customer model (ResNet34) |           0,85            |
+|ResNet50  |           0,96            |
+|VGG16 |           0,83            |
+|EfficientNetB0 |           0,96            |
 
 
 * **Customer model(ResNet34)**
