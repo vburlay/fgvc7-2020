@@ -70,8 +70,8 @@ if add_selectbox  == "Application start" :
             elif add_radio == "EfficientNetB0(pre-train)":
                 models_dir = os.path.join(base_dir, 'models/EfficientNetB0.h5')
 
-            elif add_radio == "ResNet50(pre-train)":
-                models_dir = os.path.join(base_dir, 'models/resnet50.keras')
+#            elif add_radio == "ResNet50(pre-train)":
+#                models_dir = os.path.join(base_dir, 'models/resnet50.keras')
 
             model = keras.models.load_model(models_dir)
             if res_button:
