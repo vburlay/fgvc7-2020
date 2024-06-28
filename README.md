@@ -21,8 +21,8 @@ A study of the foliar disease of apples for the purpose to:
 
 ## General Information
 > In this project, a major goal was to create a current model. This current model should help with
-> diagnosis of the many diseases impacting apples
-> Data set: "Plant Pathology" comes from Kaggle [_here_](https://www.kaggle.com/c/plant-pathology-2020-fgvc7).
+> diagnosis of the many diseases impacting apples.
+> Data set "Plant Pathology" comes from Kaggle [_here_](https://www.kaggle.com/c/plant-pathology-2020-fgvc7).
 
 
 ## Technologies Used
