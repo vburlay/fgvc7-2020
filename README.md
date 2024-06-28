@@ -59,9 +59,9 @@ ResNet50
 |EfficientNetB0 |  0,94     |   0,94    |
 
 
-* **ResNet(Architecture)**
+* **Customer model(ResNet34)**
 
-![image3](https://github.com/vburlay/anw_feld_ba/raw/main/images/model.PNG ) 
+![image3](https://github.com/vburlay/fgvc7-2020/raw/master/model.png) 
 
 
 ## Setup
