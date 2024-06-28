@@ -29,14 +29,27 @@ A study of the foliar disease of apples for the purpose to:
 - Python - version 3.10.0
 
 ## Features
-- Keras (Customer model, Customer model (ResNet34), ResNet50, VGG16, EfficientNetB0)
+- Keras(Customer model, Customer model (ResNet34), ResNet50, VGG16, EfficientNetB0)
 
 ## Screenshots
-* **ROC (KMeans + Logistic regression )** 
-![image](https://github.com/vburlay/anw_feld_ba/raw/main/images/roc.PNG ) 
-* **Accuracy, Sensitivity & Specificity for different cut off points** 
-![image](https://github.com/vburlay/anw_feld_ba/raw/main/images/eval.PNG ) 
-* 
+* **Accuracy(VGG16,ResNet50)**
+
+VGG16
+![image](https://github.com/vburlay/fgvc7-2020/raw/master/my_models_eval/accurancy_vgg16.png) 
+ResNet50
+![image](https://github.com/vburlay/fgvc7-2020/raw/master/my_models_eval/accurancy_resnet50.png) 
+
+* **Loss (VGG16,ResNet50)** 
+
+VGG16
+![image](https://github.com/vburlay/fgvc7-2020/raw/master/my_models_eval/loss_vgg16.png) 
+
+ResNet50
+![image](https://github.com/vburlay/fgvc7-2020/raw/master/my_models_eval/loss_resnet50.png) 
+
+
+* **All models(Evaluation)**
+
 | Architecture    |Accuracy of Training data   |Accuracy of Test data  |
 |-----------|:-----:| -----:|
 |Customer model  |  0,96     |   0,91    |
@@ -46,17 +59,11 @@ A study of the foliar disease of apples for the purpose to:
 |EfficientNetB0 |  0,94     |   0,94    |
 
 
-* **CNN (Architecture)**
+* **ResNet(Architecture)**
 
 ![image3](https://github.com/vburlay/anw_feld_ba/raw/main/images/model.PNG ) 
 
-* **CNN (Evaluation)**
 
-![image4](https://github.com/vburlay/anw_feld_ba/raw/main/images/evaluation.PNG ) 
-
-* **KMeans**
-
-![image2](https://github.com/vburlay/anw_feld_ba/raw/main/images/clusters.PNG ) 
 ## Setup
 You can install the package as follows:
 ```r
