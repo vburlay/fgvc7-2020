@@ -1,6 +1,5 @@
 from keras._tf_keras.keras.preprocessing.image import ImageDataGenerator
 from dataclasses import dataclass
-#from keras._tf_keras.keras.applications.vgg16 import preprocess_input
 from keras._tf_keras.keras.applications.resnet50 import preprocess_input
 import os
 import tensorflow as tf
