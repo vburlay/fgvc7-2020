@@ -27,6 +27,7 @@ A study of the foliar disease of apples for the purpose to:
 
 ## Technologies Used
 - Python - version 3.10.0
+- Ubuntu 22.04
 
 ## Features
 - Keras(Customer model, Customer model (ResNet34), ResNet50, VGG16, EfficientNetB0)
@@ -82,15 +83,37 @@ import matplotlib.pyplot as plt
 ```
 
 ## Usage
-The result 0.94025 - 94 % is good but with preprocessing by clustering the accuracy can be improved. Clustering (K-Means) can be an efficient approach for dimensionality reduction but for this a pipeline has to be created that divides the training data into clusters 34 and replaces the data by their distances to this cluster 34 to apply a logistic regression model afterwards:
+The result of Customer model (0.86) - 84 % is good but with pre-train Model (ResNet50 or EfficientNetB0 ) can be better - 96 %:
 ```r
-pipeline = Pipeline([
-    ("kmeans", KMeans(n_clusters = d)),
-    ("log_reg", LogisticRegression(multi_class = 'ovr',
-             class_weight = None, 
-             solver= 'saga', 
-             max_iter = 10000)),
-])
+def feature_extractor(inputs):
+    feature_extractor = ResNet50(input_shape=(224, 224, 3),
+                                               include_top=False,
+                                               weights='imagenet')(inputs)
+    return feature_extractor
+def classifier(inputs):
+    x = keras.layers.GlobalAveragePooling2D()(inputs)
+    x = keras.layers.Flatten()(x)
+    x = keras.layers.Dense(1024, activation="relu")(x)
+    x = keras.layers.Dense(512, activation="relu")(x)
+    x = keras.layers.Dense(4, activation="softmax", name="classification")(x)
+    return x
+def final_model(inputs):
+
+    resnet_feature_extractor = feature_extractor(inputs)
+    classification_output = classifier(resnet_feature_extractor)
+
+    return classification_output
+def get_resnet50():
+    inputs = keras.Input(shape=(G.img_height,G.img_width,G.RGB))
+
+    classification_output = final_model(inputs)
+    model = keras.Model(inputs=inputs, outputs=classification_output)
+
+    model.compile(optimizer='SGD',
+                  loss='categorical_crossentropy',
+                  metrics=['accuracy'])
+    keras.backend.clear_session()
+    return model
 ```
 
 
