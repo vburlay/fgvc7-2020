@@ -64,9 +64,9 @@ if add_selectbox  == "Application start" :
                 models_dir = 'models/vgg16.h5'
             elif add_radio == "EfficientNetB0(pre-train)":
                 models_dir = 'models/EfficientNetB0.h5'
-
-            model = keras.models.load_model(models_dir)
-            if res_button:
+            if add_radio != "ResNet50(pre-train)":
+                model = keras.models.load_model(models_dir)
+            if res_button and add_radio != "ResNet50(pre-train)":
                 image_tensor = np.vstack([img_array])
                 predictions = model.predict(image_tensor)
                 score = tf.nn.softmax(predictions[0])
