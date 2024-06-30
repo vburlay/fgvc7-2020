@@ -6,7 +6,7 @@ A study of the foliar disease of apples for the purpose to:
 3) Deal with rare classes and novel symptoms;
 4) Address depth perception—angle, light, shade, physiological age of the leaf;
 5) Incorporate expert knowledge in identification, annotation, quantification, and guiding computer vision to search for relevant features during learning. 
-> Live demo [_here_](https://vburlay-anw-feld-ba-workflowsstreamlit-demo-60fscu.streamlit.app/).
+> Live demo [_here_](https://appdemopy-fwtelgtpyyazfm3ahlctme.streamlit.app/).
 ## Table of Contents
 * [Genelal Info](#general-nformation)
 * [Technologies Used](#technologies-used)
