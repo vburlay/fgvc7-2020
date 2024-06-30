@@ -124,7 +124,7 @@ Project is: _complete_
 ## Room for Improvement
 
 - The data implemented in the analysis has a relatively small volume. This should be improved by the new measurements of the characteristics.
-- It is also conceivable that the further number of new customer groups will be included in the analysis. In this way, the new characteristics of customers can make the results more meaningful.
+- It is also conceivable that the further number of new classes will be included in the analysis. In this way, the new characteristics of the foliar disease of apples  can make the results more meaningful.
 
 
 
