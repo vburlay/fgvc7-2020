@@ -6,8 +6,6 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-
-
 classes = {0:'healthy',1:'multiple_diseases',2:'rust',3:'scab'}
 base_dir = 'https://raw.githubusercontent.com/vburlay/fgvc7-2020/master'
 

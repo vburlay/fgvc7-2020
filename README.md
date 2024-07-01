@@ -36,16 +36,21 @@ A study of the foliar disease of apples for the purpose to:
 * **Accuracy(VGG16,ResNet50)**
 
 VGG16
+
 ![image](https://github.com/vburlay/fgvc7-2020/raw/master/my_models_eval/accurancy_vgg16.png) 
+
 ResNet50
+
 ![image](https://github.com/vburlay/fgvc7-2020/raw/master/my_models_eval/accurancy_resnet50.png) 
 
 * **Loss (VGG16,ResNet50)** 
 
 VGG16
+
 ![image](https://github.com/vburlay/fgvc7-2020/raw/master/my_models_eval/loss_vgg16.png) 
 
 ResNet50
+
 ![image](https://github.com/vburlay/fgvc7-2020/raw/master/my_models_eval/loss_resnet50.png) 
 
 
